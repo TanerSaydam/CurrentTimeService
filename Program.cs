@@ -10,6 +10,7 @@ app.UseSwaggerUI();
 
 app.MapGet("/", () => "Hello World!");
 
+//Test
 app.MapGet("/current-time", () => Results.Ok(DateTime.UtcNow));
 
 app.Run();
