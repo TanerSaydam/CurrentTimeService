@@ -32,4 +32,11 @@ app.MapGet("/create", (string work, ApplicationDbContext context) =>
     return Results.Ok(todo);
 });
 
+using (var scope = app.Services.CreateScope())
+{
+    var srv = scope.ServiceProvider;
+    var context = srv.GetRequiredService<ApplicationDbContext>();
+    context.Database.Migrate();
+};
+
 app.Run();
